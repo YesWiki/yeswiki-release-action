@@ -64,9 +64,11 @@ cp -rf $INPUT_DIR $TMP_DIR
 
 # 1. Installs PHP dependencies
 if [ -f "$TMP_DIR/composer.json" ] && [ -x $COMPOSER_BIN ]; then
-  $COMPOSER_BIN install --optimize-autoloader --working-dir="$TMP_DIR"
+  # use `--ignore-platform-req=ext-sockets` because currently there is trouble to install composer for 
+  # extensions needed `ext-sockets`
+  # TODO install `ext-sockets` on Docker
+  $COMPOSER_BIN install --no-dev --optimize-autoloader --working-dir="$TMP_DIR" --ignore-platform-req=ext-sockets
   $COMPOSER_BIN test --working-dir="$TMP_DIR"
-  $COMPOSER_BIN install --quiet --no-dev --optimize-autoloader --working-dir="$TMP_DIR --ignore-platform-req=ext-sockets"
 else
   echo 'Skipping composer.json install…'
 fi
