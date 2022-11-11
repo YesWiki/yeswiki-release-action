@@ -46,7 +46,7 @@ jobs:
     - name: Test and package the extension
       id: package
       # uses: yeswiki/release-action@v1
-      uses: YesWiki/yeswiki-release-action@v1
+      uses: yeswiki/yeswiki-release-action@v1
 
     - name: Upload zip file
       uses: actions/upload-release-asset@v1
@@ -73,7 +73,7 @@ variables:
 
 package:
   stage: package
-  image: ghcr.io/YesWiki/yeswiki-release-action:latest
+  image: ghcr.io/yeswiki/yeswiki-release-action:latest
   script:
     - /package.sh $CI_PROJECT_DIR $CI_PROJECT_NAME $CI_COMMIT_REF_NAME
   artifacts:
