@@ -46,7 +46,7 @@ jobs:
     - name: Test and package the extension
       id: package
       # uses: yeswiki/release-action@v1
-      uses: oncletom/yeswiki-release-action@v1
+      uses: YesWiki/yeswiki-release-action@v1
 
     - name: Upload zip file
       uses: actions/upload-release-asset@v1
@@ -62,7 +62,7 @@ jobs:
       # ...
 ```
 
-See it in action in [yeswiki/yeswiki-extension-publication](https://github.com/yeswiki/yeswiki-extension-publication).
+See it in action in [yeswiki/yeswiki-extension-publication].
 
 ## Use it in a GitLab CI Runner
 
@@ -73,7 +73,7 @@ variables:
 
 package:
   stage: package
-  image: ghcr.io/oncletom/yeswiki-release-action:latest
+  image: ghcr.io/YesWiki/yeswiki-release-action:latest
   script:
     - /package.sh $CI_PROJECT_DIR $CI_PROJECT_NAME $CI_COMMIT_REF_NAME
   artifacts:
@@ -115,7 +115,7 @@ release:
         link_type: other
 ```
 
-See it in action in [oncletom/yeswiki-extension-test].
+See it in action in [thom4parisot/yeswiki-extension-test].
 
 ## Docker setup
 
@@ -129,11 +129,11 @@ docker run --rm -v $(pwd)/yeswiki-extension-test:/yeswiki-extension-test yeswiki
 
 ## Roadmap
 
-- [x] [Make it work with GitHub Actions][yeswiki-extension-publication]
-- [x] [Make it work with GitLab CI][oncletom/yeswiki-extension-test]
+- [x] [Make it work with GitHub Actions][yeswiki/yeswiki-extension-publication]
+- [x] [Make it work with GitLab CI][thom4parisot/yeswiki-extension-test]
 - [x] Infer extension name from `composer.json`
 - [ ] Notify YesWiki extension registry
 
 [YesWiki]: https://yeswiki.net
-[yeswiki-extension-publication]: https://github.com/YesWiki/yeswiki-extension-publication
-[oncletom/yeswiki-extension-test]: https://gitlab.com/oncletom/yeswiki-extension-test
+[yeswiki/yeswiki-extension-publication]: https://github.com/YesWiki/yeswiki-extension-publication
+[thom4parisot/yeswiki-extension-test]: https://gitlab.com/thom4parisot/yeswiki-extension-test
